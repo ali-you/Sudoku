@@ -20,7 +20,7 @@ class Main {
             }
             System.out.println();
         }
-
+        solve(board);
 
     }
 
