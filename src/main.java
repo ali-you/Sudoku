@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 
 
-
 class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File("input.txt"));
@@ -16,11 +15,26 @@ class Main {
         }
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) {
-                System.out.print(board[i][j]);
+                if (j < 8)
+                    System.out.print(board[i][j] + " ");
+                else System.out.print(board[i][j]);
             }
             System.out.println();
         }
+
+        System.out.println();
+        System.out.println();
+
         solve(board);
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (j < 8)
+                    System.out.print(board[i][j] + " ");
+                else System.out.print(board[i][j]);
+            }
+            System.out.println();
+        }
 
     }
 
@@ -29,7 +43,7 @@ class Main {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (board[i][j] == 0) {
-                    for (int k = 0; k <= 9; k++) {
+                    for (int k = 1; k <= 9; k++) {
                         board[i][j] = k;
                         if (isValid(board, i, j) && solve(board)) {
                             return true;
